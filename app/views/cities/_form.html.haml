@@ -1,0 +1,27 @@
+= form_for @city, :html => {:multipart => true} do |f|
+  - if @city.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@city.errors.count, "error")
+        prohibited this city from being saved:
+      %ul
+        - @city.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+  .field
+    = f.label :description
+    %br/
+    = f.text_area :description
+  .field
+    = f.label :cover_picture
+    %br/
+    = f.file_field :cover_picture
+  .field
+    = f.label :logo_picture
+    %br/
+    = f.file_field :logo_picture
+  .actions
+    = f.submit

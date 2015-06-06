@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %strong Main color:
+  = @branding.main_color
+%p
+  %strong Secondary color:
+  = @branding.secondary_color
+%p
+  %strong Background color:
+  = @branding.background_color
+= link_to 'Edit', edit_branding_path(@branding)
+|
+= link_to 'Back', brandings_path

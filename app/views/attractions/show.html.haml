@@ -1,0 +1,40 @@
+.border-form
+  %p#notice= notice
+  %p
+    %strong Name:
+    = @attraction.name
+  %p
+    %strong Description:
+    = @attraction.description
+  %p
+    %strong Address:
+    = @attraction.address
+  %p
+    %strong Latitude:
+    = @attraction.latitude
+  %p
+    %strong Longitude:
+    = @attraction.longitude
+  %p
+    %strong Website:
+    = @attraction.website
+  %p
+    %strong Phone:
+    = @attraction.phone
+  %p
+    %strong Promoted:
+    = @attraction.promoted
+  %p
+    %strong City:
+    = @attraction.city.try(:name)
+  = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@attraction.latitude}%2C#{@attraction.longitude}"
+  %p
+    Hotele w okolicy
+    - for attraction in @attraction.nearbys(10)
+      %li
+        = link_to attraction.name, attraction
+        (#{attraction.distance.round(2)} miles)
+  = link_to 'Edit', edit_attraction_path(@attraction)
+  |
+  = link_to 'Back', attractions_path
+  

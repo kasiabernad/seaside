@@ -1,0 +1,19 @@
+%h1 Listing brandings
+%table
+  %thead
+    %tr
+      %th Main color
+      %th Secondary color
+      %th Background color
+      %th{:colspan => "3"}
+  %tbody
+    - @brandings.each do |branding|
+      %tr
+        %td= branding.main_color
+        %td= branding.secondary_color
+        %td= branding.background_color
+        %td= link_to 'Show', branding
+        %td= link_to 'Edit', edit_branding_path(branding)
+        %td= link_to 'Destroy', branding, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Branding', new_branding_path

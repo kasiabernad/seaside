@@ -1,0 +1,34 @@
+.border-form
+  %h1 Listing attractions
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Description
+        %th Address
+        %th Latitude
+        %th Longitude
+        %th Website
+        %th Phone
+        %th Promoted
+        %th City
+        %th{:colspan => "3"}
+    %tbody
+      - @attractions.each do |attraction|
+        %tr
+          %td= attraction.name
+          %td= attraction.description
+          %td= attraction.address
+          %td= attraction.latitude
+          %td= attraction.longitude
+          %td= attraction.website
+          %td= attraction.phone
+          %td= attraction.promoted
+          - if !attraction.city_id.nil?
+            %td= link_to "#{attraction.city.try(:name)}", city_path(attraction.city_id)
+          -else
+            %td
+          %td= link_to 'Show', attraction
+          %td= link_to 'Edit', edit_attraction_path(attraction)
+          %td= link_to 'Destroy', attraction, method: :delete, data: { confirm: 'Are you sure?' }
+  

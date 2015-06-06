@@ -1,0 +1,22 @@
+.border-form
+  %h1 Listing cities
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Description
+        %th Cover picture
+        %th Logo picture
+        %th{:colspan => "3"}
+    %tbody
+      - @cities.each do |city|
+        %tr
+          %td= city.name
+          %td= city.description
+          %td= image_tag(city.cover_picture_url, :width => 300) if city.cover_picture.present?
+          %td= image_tag(city.logo_picture_url, :width => 300) if  city.cover_picture.present?
+          %td= link_to 'Show', city
+          %td= link_to 'Edit', edit_city_path(city)
+          %td= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' }
+  %br/
+  = link_to 'New City', new_city_path

@@ -1,0 +1,23 @@
+= form_for(@branding) do |f|
+  - if @branding.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@branding.errors.count, "error")
+        prohibited this branding from being saved:
+      %ul
+        - @branding.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :main_color
+    %br/
+    = f.text_field :main_color
+  .field
+    = f.label :secondary_color
+    %br/
+    = f.text_field :secondary_color
+  .field
+    = f.label :background_color
+    %br/
+    = f.text_field :background_color
+  .actions
+    = f.submit

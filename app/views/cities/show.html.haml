@@ -1,0 +1,36 @@
+.border-form
+  %p#notice= notice
+  %p
+  %h4
+    = @city.name
+  %p
+    %strong Description:
+    = @city.description
+  %p
+    %strong Cover picture:
+    = image_tag(@city.cover_picture_url, :width => 300) if @city.cover_picture.present?
+    %strong Logo picture:
+    = image_tag(@city.logo_picture_url, :width => 300) if  @city.cover_picture.present?
+  %p
+    %strong Hotels
+    %ul
+    - @city.hotels.each do |hotel|
+      %li 
+        = hotel.name
+        = hotel.address
+    %br
+    = link_to 'New Hotel', new_hotel_path(city_id: @city), class:"btn btn-default"
+  %p
+    %strong Attractions
+    %ul
+    - @city.attractions.each do |attraction|
+      %li
+        = attraction.name
+        = attraction.address
+    %br
+    = link_to 'New Attraction', new_attraction_path(city_id: @city), class:"btn btn-default"
+  %center
+    = link_to 'Edit', edit_city_path(@city),  class:"btn btn-default"
+    |
+    = link_to 'Back', cities_path,  class:"btn btn-default"
+  
