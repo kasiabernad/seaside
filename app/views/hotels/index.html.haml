@@ -6,8 +6,8 @@
         %th Name
         %th Description
         %th Address
-        %th Latitude
-        %th Longitude
+        / %th Latitude
+        / %th Longitude
         %th Website
         %th Phone
         %th Promoted
@@ -19,8 +19,8 @@
           %td= hotel.name
           %td= hotel.description.first(200) + '...'
           %td= hotel.address
-          %td= hotel.latitude.round(4)
-          %td= hotel.longitude.round(4)
+          / %td= hotel.latitude.round(4)
+          / %td= hotel.longitude.round(4)
           %td= hotel.website
           %td= hotel.phone
           %td= hotel.promoted
