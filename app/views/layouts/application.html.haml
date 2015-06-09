@@ -38,6 +38,12 @@
                   = link_to('Sing in', new_user_session_path)
                 %li.active
                   = link_to('Sing up', new_user_registration_path)
+                %li.active
+                  %a{:href => "/cities"} Cities
+                %li.active
+                  %a{:href => "/hotels"} Hotels
+                %li.active
+                  %a{:href => "/attractions"} Attractions
               
     %footer
       .container

@@ -1,5 +1,6 @@
 class HotelsController < ApplicationController
   before_action :set_hotel, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only:[:edit,:update,:destroy, :new]
 
   # GET /hotels
   # GET /hotels.json
