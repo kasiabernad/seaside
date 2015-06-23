@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Hotel:
+  = @hotel_photo.hotel_id
+%p
+  %b Picture:
+  = @hotel_photo.picture
+
+= link_to 'Edit', edit_hotel_photo_path(@hotel_photo)
+\|
+= link_to 'Back', hotel_photos_path

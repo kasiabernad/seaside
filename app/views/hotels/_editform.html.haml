@@ -1,5 +1,5 @@
 .border-form
-  = form_for(@hotel) do |f|
+  = form_for(@hotel, :html => {:multipart => true}) do |f|
     - if @hotel.errors.any?
       #error_explanation
         %h2
@@ -20,14 +20,13 @@
       = f.label :address
       %br/
       = f.text_field :address
-    / .field
-    /   = f.label :latitude
-    /   %br/
-    /   = f.text_field :latitude
-    / .field
-    /   = f.label :longitude
-    /   %br/
-    /   = f.text_field :longitude
+    .field
+      %p
+        - @hotel_photos.each do |p|
+          = image_tag(p.picture, :width => 150) if p.picture.present?
+          = link_to 'Destroy',p, method: :delete, data: { confirm: 'Are you sure?' }
+        = link_to "Create Picture", new_hotel_photo_path(:hotel_id => @hotel.id)
+      %p
     .field
       = f.label :website
       %br/

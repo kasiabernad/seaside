@@ -11,6 +11,7 @@ class HotelsController < ApplicationController
   # GET /hotels/1
   # GET /hotels/1.json
   def show
+    @hotel_photos = @hotel.hotel_photos.all
   end
 
   # GET /hotels/new
@@ -20,6 +21,7 @@ class HotelsController < ApplicationController
 
   # GET /hotels/1/edit
   def edit
+    @hotel_photos = @hotel.hotel_photos.all
   end
 
   # POST /hotels
@@ -29,7 +31,7 @@ class HotelsController < ApplicationController
 
     respond_to do |format|
       if @hotel.save
-        format.html { redirect_to @hotel, notice: 'Hotel was successfully created.' }
+        format.html { redirect_to edit_hotel_path(@hotel), notice: 'Hotel was successfully created.' }
         format.json { render :show, status: :created, location: @hotel }
       else
         format.html { render :new }
@@ -70,6 +72,6 @@ class HotelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hotel_params
-      params.require(:hotel).permit(:name, :description, :address, :latitude, :longitude, :website, :phone, :promoted, :city_id)
+      params.require(:hotel).permit(:name, :description, :address, :latitude, :longitude, :website, :phone, :promoted, :city_id, :hotel_photos)
     end
 end

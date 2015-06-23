@@ -1,0 +1,23 @@
+%h1 Listing attraction_photos
+
+%table
+  %thead
+    %tr
+      %th Attraction
+      %th Picture
+      %th
+      %th
+      %th
+
+  %tbody
+    - @attraction_photos.each do |attraction_photo|
+      %tr
+        %td= attraction_photo.attraction_id
+        %td= attraction_photo.picture
+        %td= link_to 'Show', attraction_photo
+        %td= link_to 'Edit', edit_attraction_photo_path(attraction_photo)
+        %td= link_to 'Destroy', attraction_photo, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Attraction photo', new_attraction_photo_path

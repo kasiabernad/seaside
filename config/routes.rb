@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :attraction_photos
+  resources :hotel_photos
+
   root :to => redirect('/welcome/index')
   get 'welcome/index'
 

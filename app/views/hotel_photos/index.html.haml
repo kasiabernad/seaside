@@ -1,0 +1,23 @@
+%h1 Listing hotel_photos
+
+%table
+  %thead
+    %tr
+      %th Hotel
+      %th Picture
+      %th
+      %th
+      %th
+
+  %tbody
+    - @hotel_photos.each do |hotel_photo|
+      %tr
+        %td= hotel_photo.hotel_id
+        %td= hotel_photo.picture
+        %td= link_to 'Show', hotel_photo
+        %td= link_to 'Edit', edit_hotel_photo_path(hotel_photo)
+        %td= link_to 'Destroy', hotel_photo, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Hotel photo', new_hotel_photo_path
