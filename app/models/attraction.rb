@@ -4,4 +4,5 @@ class Attraction < ActiveRecord::Base
   belongs_to :city
   has_many :attraction_photos
   accepts_nested_attributes_for :attraction_photos
+  mount_uploader :picture, PictureUploader
 end
