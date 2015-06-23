@@ -10,6 +10,7 @@ class AttractionsController < ApplicationController
   # GET /attractions/1
   # GET /attractions/1.json
   def show
+    @attraction_photos = @attraction.attraction_photos.all
   end
 
   # GET /attractions/new
@@ -19,6 +20,7 @@ class AttractionsController < ApplicationController
 
   # GET /attractions/1/edit
   def edit
+    @attraction_photos = @attraction.attraction_photos.all
   end
 
   # POST /attractions
@@ -28,7 +30,7 @@ class AttractionsController < ApplicationController
 
     respond_to do |format|
       if @attraction.save
-        format.html { redirect_to @attraction, notice: 'Attraction was successfully created.' }
+        format.html { redirect_to edit_attraction_path(@attraction), notice: 'Attraction was successfully created.' }
         format.json { render :show, status: :created, location: @attraction }
       else
         format.html { render :new }
@@ -69,6 +71,6 @@ class AttractionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def attraction_params
-      params.require(:attraction).permit(:name, :description, :address, :latitude, :longitude, :website, :phone, :promoted, :city_id)
+      params.require(:attraction).permit(:name, :description, :address, :latitude, :longitude, :website, :phone, :promoted, :city_id, :attraction_photos)
     end
 end

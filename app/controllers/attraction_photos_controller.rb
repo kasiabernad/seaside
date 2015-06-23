@@ -25,10 +25,10 @@ class AttractionPhotosController < ApplicationController
   # POST /attraction_photos.json
   def create
     @attraction_photo = AttractionPhoto.new(attraction_photo_params)
-
+    @attraction = @attraction_photo.attraction
     respond_to do |format|
       if @attraction_photo.save
-        format.html { redirect_to @attraction_photo, notice: 'Attraction photo was successfully created.' }
+        format.html { redirect_to @attraction, notice: 'Attraction photo was successfully created.' }
         format.json { render :show, status: :created, location: @attraction_photo }
       else
         format.html { render :new }

@@ -1,5 +1,5 @@
 .border-form
-  = form_for(@attraction) do |f|
+  = form_for(@attraction, :html => {:multipart => true}) do |f|
     - if @attraction.errors.any?
       #error_explanation
         %h2
@@ -20,6 +20,13 @@
       = f.label :address
       %br/
       = f.text_field :address
+    .field
+      %p
+        - @attraction_photos.each do |p|
+          = image_tag(p.picture, :width => 150) if p.picture.present?
+          = link_to 'Destroy',p, method: :delete, data: { confirm: 'Are you sure?' }
+        = link_to "Create Picture", new_attraction_photo_path(:attraction_id => @attraction.id)
+      %p
     / .field
     /   = f.label :latitude
     /   %br/

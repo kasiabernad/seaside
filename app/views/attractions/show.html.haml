@@ -27,13 +27,18 @@
   %p
     %strong City:
     = @attraction.city.try(:name)
-  = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@attraction.latitude}%2C#{@attraction.longitude}"
   %p
-    Hotele w okolicy
-    - for attraction in @attraction.nearbys(10)
-      %li
-        = link_to attraction.name, attraction
-        (#{attraction.distance.round(2)} miles)
+  - @attraction_photos.each do |p|
+    = image_tag(p.picture, :width => 150) if p.picture.present?
+  %p
+  - if @attraction.address.present?
+    = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@attraction.latitude}%2C#{@attraction.longitude}"
+    %p
+      Hotele w okolicy
+      - for attraction in @attraction.nearbys(10)
+        %li
+          = link_to attraction.name, attraction
+          (#{attraction.distance.round(2)} miles)
   = link_to 'Edit', edit_attraction_path(@attraction)
   |
   = link_to 'Back', attractions_path

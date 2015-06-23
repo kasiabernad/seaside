@@ -1,3 +1,4 @@
+= image_tag @attraction_photo.picture
 = form_for @attraction_photo do |f|
   - if @attraction_photo.errors.any?
     #error_explanation
@@ -7,10 +8,8 @@
           %li= msg
 
   .field
-    = f.label :attraction_id
-    = f.number_field :attraction_id
-  .field
     = f.label :picture
-    = f.text_field :picture
+    = f.file_field :picture
+    = f.hidden_field :attraction_id, :value => params[:attraction_id]
   .actions
     = f.submit 'Save'
