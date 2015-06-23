@@ -4,5 +4,4 @@ class Hotel < ActiveRecord::Base
   belongs_to :city
   has_many :hotel_photos
   accepts_nested_attributes_for :hotel_photos
-  mount_uploader :picture, PictureUploader
 end
