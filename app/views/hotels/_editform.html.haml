@@ -23,7 +23,6 @@
     .field
       %p
         - @hotel_photos.each do |p|
-          - binding.pry
           = image_tag(p.picture, :width => 150) if p.picture.present?
           = link_to 'Destroy',p, method: :delete, data: { confirm: 'Are you sure?' }
         = link_to "Create Picture", new_hotel_photo_path(:hotel_id => @hotel.id)
